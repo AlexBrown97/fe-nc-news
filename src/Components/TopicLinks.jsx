@@ -22,20 +22,29 @@ const Topics = styled.button`
 
 export default class TopicLinks extends React.Component {
   state = {
-    articles: [],
+    topics: [],
   };
   componentDidMount() {
     axios
-      .get("https://alex-northcoders-news.herokuapp.com/api/articles")
-      .then(({ data: { articles } }) => {
-        this.setState({ articles });
+      .get("https://alex-northcoders-news.herokuapp.com/api/topics")
+      .then(({ data: { topics } }) => {
+        this.setState({ topics });
       });
   }
   render() {
     return (
-      <Topics>
-        <Link to="/articles">All Topics</Link>
-      </Topics>
+      <nav>
+        <Topics>
+          <Link to="/articles">all articles</Link>
+        </Topics>
+        {this.state.topics.map((topic) => {
+          return (
+            <Topics>
+              <Link to={`/articles/${topic.slug}`}>{topic.slug}</Link>
+            </Topics>
+          );
+        })}
+      </nav>
     );
   }
 }

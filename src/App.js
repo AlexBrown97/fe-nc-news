@@ -13,6 +13,7 @@ function App() {
       <Router>
         <Homepage path="/" />
         <ArticleList path="/articles" />
+        <ArticleList path="/articles/:topic" />
         <ErrorHandler default status={404} message="This page does not exist" />
       </Router>
     </div>

@@ -11,7 +11,9 @@ class ArticleList extends Component {
 
   componentDidMount() {
     axios
-      .get("https://alex-northcoders-news.herokuapp.com/api/articles")
+      .get("https://alex-northcoders-news.herokuapp.com/api/articles", {
+        params: { topic: this.props.topic },
+      })
       .then(({ data: { articles } }) => {
         this.setState({ articles, isLoading: false });
       })
@@ -26,6 +28,7 @@ class ArticleList extends Component {
       });
   }
   render() {
+    console.log(this.props);
     const { articles, isLoading, error } = this.state;
     if (error) return <ErrorHandler {...error} />;
     if (isLoading) return <div>Loading Articles...</div>;
