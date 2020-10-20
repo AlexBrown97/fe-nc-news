@@ -3,17 +3,22 @@ import axios from "axios";
 import { Link } from "@reach/router";
 import styled from "styled-components";
 
-// const Topics = styled.button`
-//   background-color: #ba1f31;
-//   padding: 18px;
-//   color: white;
-//   width: 300px;
-//   height: 40px;
-//   font-size: 35px;
-//   border-radius: 25px;
-//   margin-left: auto;
-//   margin-right: auto;
-// `;
+const Topics = styled.button`
+  font-family: sans-serif;
+  font-weight: lighter;
+  background-color: #ba1f31;
+  border-radius: 25px;
+  font-size: 1.5em;
+  padding: 0.4em;
+  border: 2px solid black;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  &:hover {
+    background-color: palevioletred;
+    color: white;
+    border: 2px solid palevioletred;
+  }
+`;
 
 export default class TopicLinks extends React.Component {
   state = {
@@ -28,9 +33,9 @@ export default class TopicLinks extends React.Component {
   }
   render() {
     return (
-      <button>
-        <Link to="/articles">All button</Link>
-      </button>
+      <Topics>
+        <Link to="/articles">All Topics</Link>
+      </Topics>
     );
   }
 }

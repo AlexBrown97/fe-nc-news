@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { Component } from "react";
+import ErrorHandler from "./ErrorHandler";
 
 class ArticleList extends Component {
   state = {
     articles: [],
     isLoading: true,
+    error: null,
   };
 
   componentDidMount() {
@@ -12,10 +14,20 @@ class ArticleList extends Component {
       .get("https://alex-northcoders-news.herokuapp.com/api/articles")
       .then(({ data: { articles } }) => {
         this.setState({ articles, isLoading: false });
+      })
+      .catch(({ response }) => {
+        console.dir(response);
+        this.setState({
+          error: {
+            status: response.status,
+            message: response.data.msg,
+          },
+        });
       });
   }
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, error } = this.state;
+    if (error) return <ErrorHandler {...error} />;
     if (isLoading) return <div>Loading Articles...</div>;
     return (
       <main>
