@@ -2,6 +2,19 @@ import React from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
 import { render } from "@testing-library/react";
+import styled from "styled-components";
+
+const Topics = styled.button`
+  background-color: #ba1f31;
+  padding: 18px;
+  color: white;
+  width: 300px;
+  height: 40px;
+  font-size: 35px;
+  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
+`;
 
 export default class TopicLinks extends React.Component {
   state = {
@@ -15,6 +28,10 @@ export default class TopicLinks extends React.Component {
       });
   }
   render() {
-    return <Link to="/articles">All Topics</Link>;
+    return (
+      <Topics>
+        <Link to="/articles">All Topics</Link>
+      </Topics>
+    );
   }
 }

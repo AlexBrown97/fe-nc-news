@@ -9,7 +9,10 @@ const Northcoders = styled.h1`
 
 const Header = () => {
   return (
-    <Link to="/" style={{ textDecoration: "none" }}>
+    <Link
+      to="/"
+      style={{ textDecoration: "none", fontFamily: "playfair display" }}
+    >
       <Northcoders>Northcoder's News</Northcoders>
     </Link>
   );
