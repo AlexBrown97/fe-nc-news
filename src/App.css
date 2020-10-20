@@ -1,3 +1,15 @@
 .App {
   text-align: center;
 }
+.articleCards {
+  border: 1px solid #ba1f31;
+}
+
+.articleTitle {
+  font-family: "Playfair Display";
+}
+
+.articleInfo {
+  font-family: sans-serif;
+  font-weight: lighter;
+}

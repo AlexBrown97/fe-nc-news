@@ -20,7 +20,18 @@ class ArticleList extends Component {
     return (
       <main>
         {articles.map((article) => {
-          return <section>{article.title}</section>;
+          return (
+            <section className="articleCards">
+              <h1 className="articleTitle">{article.title}</h1>
+              <h3 className="articleInfo">
+                {article.author}
+                <br />
+                {article.topic}
+                <br />
+                {article.created_at}
+              </h3>
+            </section>
+          );
         })}
       </main>
     );
