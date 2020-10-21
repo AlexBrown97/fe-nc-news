@@ -5,6 +5,7 @@ import Homepage from "./Pages/Homepage";
 import { Router } from "@reach/router";
 import ArticleList from "./Components/ArticleList";
 import ErrorHandler from "./Components/ErrorHandler";
+import SingleArticle from "./Components/SingleArticle";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Homepage path="/" />
         <ArticleList path="/articles" />
         <ArticleList path="/articles/:topic" />
+        <SingleArticle path="/article/:article_id" />
         <ErrorHandler default status={404} message="This page does not exist" />
       </Router>
     </div>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import ErrorHandler from "./ErrorHandler";
+import { Link } from "@reach/router";
 
 class ArticleList extends Component {
   state = {
@@ -18,7 +19,6 @@ class ArticleList extends Component {
         this.setState({ articles, isLoading: false });
       })
       .catch(({ response }) => {
-        console.dir(response);
         this.setState({
           error: {
             status: response.status,
@@ -28,8 +28,8 @@ class ArticleList extends Component {
       });
   }
   render() {
-    console.log(this.props);
     const { articles, isLoading, error } = this.state;
+    console.log(this.props, "<- article list");
     if (error) return <ErrorHandler {...error} />;
     if (isLoading) return <div>Loading Articles...</div>;
     return (
@@ -37,7 +37,9 @@ class ArticleList extends Component {
         {articles.map((article) => {
           return (
             <section className="articleCards">
-              <h1 className="articleTitle">{article.title}</h1>
+              <Link to={`/article/${article.article_id}`}>
+                <h1 className="articleTitle">{article.title}</h1>
+              </Link>
               <h3 className="articleInfo">
                 {article.author}
                 <br />
