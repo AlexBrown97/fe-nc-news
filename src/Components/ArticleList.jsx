@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { Component } from "react";
 import ErrorHandler from "./ErrorHandler";
 import { Link } from "@reach/router";
+import Loader from "./Loader";
+import VoteUpdater from "./VoteUpdater";
 
 class ArticleList extends Component {
   state = {
@@ -29,9 +31,8 @@ class ArticleList extends Component {
   }
   render() {
     const { articles, isLoading, error } = this.state;
-    console.log(this.props, "<- article list");
     if (error) return <ErrorHandler {...error} />;
-    if (isLoading) return <div>Loading Articles...</div>;
+    if (isLoading) return <Loader />;
     return (
       <main>
         {articles.map((article) => {
@@ -40,12 +41,16 @@ class ArticleList extends Component {
               <Link to={`/article/${article.article_id}`}>
                 <h1 className="articleTitle">{article.title}</h1>
               </Link>
+              <VoteUpdater
+                votes={article.votes}
+                article_id={article.article_id}
+              />
               <h3 className="articleInfo">
-                {article.author}
+                Author: {article.author}
                 <br />
-                {article.topic}
+                Topic: {article.topic}
                 <br />
-                {article.created_at}
+                Published: {article.created_at}
               </h3>
             </section>
           );

@@ -18,7 +18,7 @@
   font-family: "Playfair Display";
 }
 
-.singleTopic {
+.authorTopicDate {
   font-family: "Playfair Display";
   text-align: left;
   font-weight: bold;
@@ -29,4 +29,14 @@
 
 .singleBody {
   font-family: "Playfair Display";
+}
+
+.singleVotes {
+  font-family: "Playfair Display";
+  text-align: left;
+}
+
+.loadingArticles {
+  font-family: "Playfair Display";
+  font-size: 1.5em;
 }
