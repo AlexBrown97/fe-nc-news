@@ -15,13 +15,25 @@ const ErrorHandler = (props) => {
   if (props.status === 404) {
     return (
       <Warning>
-        ❗Error - Code:{props.status}, {props.message}❗
+        <span role="img" aria-label="exclamation mark">
+          ❗
+        </span>
+        Error - Code:{props.status}, {props.message}
+        <span role="img" aria-label="exclamation mark">
+          ❗
+        </span>
       </Warning>
     );
   } else if (props.status === 400) {
     return (
       <Warning>
-        ❗Error - Code:{props.status}, {props.message}❗
+        <span role="img" aria-label="exclamation mark">
+          ❗
+        </span>
+        Error - Code:{props.status}, {props.message}
+        <span role="img" aria-label="exclamation mark">
+          ❗
+        </span>
       </Warning>
     );
   }

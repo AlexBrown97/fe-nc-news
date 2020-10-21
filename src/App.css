@@ -13,3 +13,20 @@
   font-family: sans-serif;
   font-weight: lighter;
 }
+
+.singleTitle {
+  font-family: "Playfair Display";
+}
+
+.singleTopic {
+  font-family: "Playfair Display";
+  text-align: left;
+  font-weight: bold;
+  line-height: 1.4;
+  border-bottom: 1px solid;
+  border-color: #ba1f31;
+}
+
+.singleBody {
+  font-family: "Playfair Display";
+}

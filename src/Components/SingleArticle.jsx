@@ -18,9 +18,15 @@ class SingleArticle extends Component {
     const { articleInfo } = this.state;
     return (
       <main>
-        <h2>{articleInfo.article}</h2>
-        <p>{articleInfo.topic}</p>
-        <p>{articleInfo.author}</p>
+        <h1 className="singleTitle">{articleInfo.title}</h1>
+        <p className="singleTopic">
+          Author: {articleInfo.author}
+          <br />
+          Topic: {articleInfo.topic}
+          <br />
+          Published: {articleInfo.created_at}
+        </p>
+        <p className="singleBody">{articleInfo.body}</p>
       </main>
     );
   }
