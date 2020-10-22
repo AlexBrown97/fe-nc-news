@@ -44,7 +44,11 @@ class SingleArticle extends Component {
           votes={articleInfo.votes}
           article_id={articleInfo.article_id}
         />
-        <Comments article_id={articleInfo.article_id} />
+        <h2 className="commentsTitle">Comments</h2>
+        <Comments
+          className="singleComments"
+          article_id={articleInfo.article_id}
+        />
       </main>
     );
   }

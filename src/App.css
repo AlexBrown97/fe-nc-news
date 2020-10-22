@@ -52,6 +52,24 @@
   text-align: left;
 }
 
+.commentsTitle {
+  font-family: "Playfair Display";
+  text-align: left;
+}
+.singleCommentsInfo {
+  font-family: "Playfair Display";
+  text-align: left;
+}
+.singleComments {
+  font-family: "Playfair Display";
+  text-align: left;
+  border-bottom: 1px solid #ba1f31;
+}
+
+.commentDate {
+  text-align: left;
+}
+
 .loadingArticles {
   font-family: "Playfair Display";
   font-size: 1.5em;

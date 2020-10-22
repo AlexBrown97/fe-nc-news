@@ -17,13 +17,18 @@ class Comments extends Component {
     const { comments } = this.state;
     return (
       <section>
-        <ul className="comments-list">
+        <p className="comments-list">
           {comments.map((comment) => (
-            <li key={comment.comment_id}>
-              <p>{comment.body}</p>
-            </li>
+            <p key={comment.comment_id}>
+              <p className="singleCommentsInfo">
+                User: {comment.author} <br />
+                Posted: {comment.created_at} <br />
+                Votes: {comment.votes}
+              </p>
+              <p className="singleComments">{comment.body}</p>
+            </p>
           ))}
-        </ul>
+        </p>
       </section>
     );
   }
