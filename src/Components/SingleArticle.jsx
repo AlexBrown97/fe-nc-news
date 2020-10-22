@@ -3,6 +3,7 @@ import Loader from "./Loader";
 import ErrorHandler from "./ErrorHandler";
 import VoteUpdater from "./VoteUpdater";
 import { getArticleById } from "../api";
+import Comments from "./Comments";
 
 class SingleArticle extends Component {
   state = {
@@ -43,6 +44,7 @@ class SingleArticle extends Component {
           votes={articleInfo.votes}
           article_id={articleInfo.article_id}
         />
+        <Comments article_id={articleInfo.article_id} />
       </main>
     );
   }

@@ -16,3 +16,6 @@ export const increaseVotesById = (article_id, voteValue) => {
     inc_votes: voteValue,
   });
 };
+export const getCommentsByArticleId = (article_id) => {
+  return instance.get(`/articles/${article_id}/comments`);
+};
