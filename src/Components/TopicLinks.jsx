@@ -34,7 +34,7 @@ export default class TopicLinks extends React.Component {
   render() {
     return (
       <nav>
-        <Topics>
+        <Topics className="buttons">
           <Link to="/articles">all articles</Link>
         </Topics>
         {this.state.topics.map((topic) => {

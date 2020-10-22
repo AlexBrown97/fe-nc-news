@@ -41,10 +41,6 @@ class ArticleList extends Component {
               <Link to={`/article/${article.article_id}`}>
                 <h1 className="articleTitle">{article.title}</h1>
               </Link>
-              <VoteUpdater
-                votes={article.votes}
-                article_id={article.article_id}
-              />
               <h3 className="articleInfo">
                 Author: {article.author}
                 <br />
@@ -52,6 +48,10 @@ class ArticleList extends Component {
                 <br />
                 Published: {article.created_at}
               </h3>
+              <VoteUpdater
+                votes={article.votes}
+                article_id={article.article_id}
+              />
             </section>
           );
         })}

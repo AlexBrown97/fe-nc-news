@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Loader from "./Loader";
 import ErrorHandler from "./ErrorHandler";
 import VoteUpdater from "./VoteUpdater";
+import { getArticleById } from "../api";
 
 class SingleArticle extends Component {
   state = {
@@ -11,10 +11,7 @@ class SingleArticle extends Component {
     error: null,
   };
   componentDidMount() {
-    axios
-      .get(
-        `https://alex-northcoders-news.herokuapp.com/api/articles/${this.props.article_id}`
-      )
+    getArticleById(this.props.article_id)
       .then(({ data }) => {
         this.setState({ articleInfo: data.article, isLoading: false });
       })
@@ -32,11 +29,7 @@ class SingleArticle extends Component {
     if (error) return <ErrorHandler {...error} />;
     if (isLoading) return <Loader />;
     return (
-      <main>
-        <VoteUpdater
-          votes={articleInfo.votes}
-          article_id={articleInfo.article_id}
-        />
+      <main className="singleArticle">
         <h1 className="singleTitle">{articleInfo.title}</h1>
         <p className="authorTopicDate">
           Author: {articleInfo.author}
@@ -46,7 +39,10 @@ class SingleArticle extends Component {
           Published: {articleInfo.created_at}
         </p>
         <p className="singleBody">{articleInfo.body}</p>
-        <p className="singleVotes">Votes: {articleInfo.votes}</p>
+        <VoteUpdater
+          votes={articleInfo.votes}
+          article_id={articleInfo.article_id}
+        />
       </main>
     );
   }

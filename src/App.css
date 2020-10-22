@@ -3,6 +3,22 @@
 }
 .articleCards {
   border: 1px solid #ba1f31;
+  padding: 1em;
+  animation: fadeIn 2s;
+}
+.buttons {
+  animation: fadeIn 2s;
+}
+.singleArticle {
+  animation: fadeIn 2s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .articleTitle {
