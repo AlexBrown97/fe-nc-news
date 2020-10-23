@@ -5,6 +5,25 @@ import { username } from "../constants";
 
 const { render } = require("react-dom");
 
+const Button = styled.button`
+  font-family: sans-serif;
+  font-weight: lighter;
+  color: white;
+  background-color: #ba1f31;
+  border-radius: 25px;
+  font-size: 1em;
+  padding: 0.3em;
+  border: 1px solid black;
+  margin-left: 0.5em;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  &:hover {
+    background-color: palevioletred;
+    color: white;
+    border: 2px solid palevioletred;
+  }
+`;
+
 const Header = styled.h2`
   font-family: "Playfair Display";
   padding-top: 0.4em;
@@ -25,6 +44,7 @@ class CommentAdder extends Component {
   };
 
   handleChange = (e) => {
+    console.log(e.target);
     const { value, name } = e.target;
     this.setState({ [name]: value });
   };
@@ -34,9 +54,11 @@ class CommentAdder extends Component {
       <main>
         <form onSubmit={this.handleSubmit}>
           <Header>Post a Comment</Header>
-          <label htmlFor="body">Comment:</label>
-          <textarea name="body" id="body" />
-          <button type="submit">Add</button>
+          <label className="commentLabel" htmlFor="body">
+            Comment:
+          </label>
+          <textarea onChange={this.handleChange} name="body" id="body" />
+          <Button type="submit">Add</Button>
         </form>
       </main>
     );

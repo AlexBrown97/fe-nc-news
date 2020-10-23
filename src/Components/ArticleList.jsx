@@ -25,6 +25,12 @@ const Button = styled.button`
   }
 `;
 
+const Comments = styled.p`
+  font-family: sans-serif;
+  font-weight: lighter;
+  text-align: left;
+`;
+
 class ArticleList extends Component {
   state = {
     articles: [],
@@ -89,7 +95,7 @@ class ArticleList extends Component {
         </Button>
         {articles.map((article) => {
           return (
-            <section className="articleCards">
+            <section key={article.article_id} className="articleCards">
               <Link to={`/article/${article.article_id}`}>
                 <h1 className="articleTitle">{article.title}</h1>
               </Link>
@@ -104,6 +110,7 @@ class ArticleList extends Component {
                 votes={article.votes}
                 article_id={article.article_id}
               />
+              <Comments>Comments: {article.comment_count}</Comments>
             </section>
           );
         })}

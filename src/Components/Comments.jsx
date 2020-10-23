@@ -53,7 +53,8 @@ class Comments extends Component {
     );
   }
 
-  addComment(body, username) {
+  addComment = (body, username) => {
+    console.log(this.props);
     postCommentByArticleId(this.props.article_id, {
       body,
       username,
@@ -62,10 +63,10 @@ class Comments extends Component {
         comments: [res.data.comment, ...currentState.comments],
       }));
     });
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState !== this.state.comments) {
+    if (prevProps.comments !== this.props.comments) {
       getCommentsByArticleId(this.props.article_id).then(({ data }) => {
         this.setState({ comments: data.comments, isLoading: false });
       });
@@ -78,21 +79,24 @@ class Comments extends Component {
     if (isLoading) return <Loader />;
     return (
       <section>
-        <p className="comments-list">
+        <div className="comments-list">
           {comments.map((comment) => (
-            <p key={comment.comment_id}>
-              <Button onClick={() => this.deleteComment(comment.comment_id)}>
+            <div key={comment.comment_id}>
+              <Button
+                disabled={comment.author !== "happyamy2016"}
+                onClick={() => this.deleteComment(comment.comment_id)}
+              >
                 Delete Comment
               </Button>
               <p className="singleCommentsInfo">
-                User: {comment.author} <br />
-                Posted: {comment.created_at.slice(0, 10)} <br />
+                {comment.author} <br />
+                {comment.created_at.slice(0, 10)} <br />
                 Votes: {comment.votes}
               </p>
               <p className="singleComments">{comment.body}</p>
-            </p>
+            </div>
           ))}
-        </p>
+        </div>
         <CommentAdder
           article_id={this.props.article_id}
           addComment={this.addComment}

@@ -39,7 +39,7 @@ export default class TopicLinks extends React.Component {
         </Topics>
         {this.state.topics.map((topic) => {
           return (
-            <Topics>
+            <Topics key={topic.slug}>
               <Link to={`/articles/${topic.slug}`}>{topic.slug}</Link>
             </Topics>
           );

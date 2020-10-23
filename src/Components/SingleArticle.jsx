@@ -35,18 +35,18 @@ class SingleArticle extends Component {
       <main className="singleArticle">
         <h1 className="singleTitle">{articleInfo.title}</h1>
         <p className="authorTopicDate">
-          Author: {articleInfo.author}
+          {articleInfo.author}
           <br />
-          Topic: {articleInfo.topic}
+          {articleInfo.topic}
           <br />
-          Published: {articleInfo.created_at.slice(0, 10)}
+          {articleInfo.created_at.slice(0, 10)}
         </p>
         <p className="singleBody">{articleInfo.body}</p>
         <VoteUpdater
           votes={articleInfo.votes}
           article_id={articleInfo.article_id}
         />
-        <h2 className="commentsTitle">Comments</h2>
+        <h2 className="commentsTitle">Comments: {articleInfo.comment_count}</h2>
         <Comments
           className="singleComments"
           article_id={articleInfo.article_id}
