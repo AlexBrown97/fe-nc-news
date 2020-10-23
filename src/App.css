@@ -41,6 +41,7 @@
   line-height: 1.4;
   border-bottom: 1px solid;
   border-color: #ba1f31;
+  color: #ba1f31;
 }
 
 .singleBody {
@@ -59,6 +60,7 @@
 .singleCommentsInfo {
   font-family: "Playfair Display";
   text-align: left;
+  color: #ba1f31;
 }
 .singleComments {
   font-family: "Playfair Display";

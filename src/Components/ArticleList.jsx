@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, forwardRef } from "react";
 import ErrorHandler from "./ErrorHandler";
 import { Link } from "@reach/router";
 import Loader from "./Loader";
@@ -43,35 +43,6 @@ class ArticleList extends Component {
       })
       .then(({ data: { articles } }) => {
         this.setState({ articles, isLoading: false });
-      });
-  };
-
-  orderingBy = () => {
-    this.setState({ order: "asc" });
-  };
-
-  // get the order because state has changed
-  // do another get request
-  // conditional logic to avoid infinite loop
-  // extract out method for re-use
-  componentDidUpdate(prevState) {
-    const order = this.state.order;
-    const topic = this.state.topic;
-    if (prevState.order !== order) {
-      this.fetchOrder();
-    }
-  }
-
-  // componentDidMount() {
-    axios
-      .get("https://alex-northcoders-news.herokuapp.com/api/articles", {
-        params: {
-          topic: this.props.topic,
-          order: this.state.order,
-        },
-      })
-      .then(({ data: { articles } }) => {
-        this.setState({ articles, isLoading: false });
       })
       .catch(({ response }) => {
         this.setState({
@@ -81,18 +52,41 @@ class ArticleList extends Component {
           },
         });
       });
+  };
+
+  orderingBy = (event) => {
+    const order = event.target.name;
+    this.setState({ order });
+  };
+
+  // // // get the order because state has changed
+  // // // do another get request
+  // // // conditional logic to avoid infinite loop
+  // // // extract out method for re-use
+  componentDidUpdate(prevProps, prevState) {
+    const order = this.state.order;
+    const topic = this.state.topic;
+    if (prevState.order !== order) {
+      this.fetchOrder();
+    }
   }
+
+  componentDidMount() {
+    this.fetchOrder();
+  }
+
   render() {
-    console.log(this.state.order);
     const { articles, isLoading, error } = this.state;
     if (error) return <ErrorHandler {...error} />;
     if (isLoading) return <Loader />;
     return (
       <main>
-        <Button className="buttons" onClick={this.orderingBy}>
+        <Button name="desc" className="buttons" onClick={this.orderingBy}>
           Newest to Oldest
         </Button>
-        <Button className="buttons">Oldest to Newest</Button>
+        <Button name="asc" className="buttons" onClick={this.orderingBy}>
+          Oldest to Newest
+        </Button>
         {articles.map((article) => {
           return (
             <section className="articleCards">
