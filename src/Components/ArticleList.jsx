@@ -98,7 +98,7 @@ class ArticleList extends Component {
                 <br />
                 Topic: {article.topic}
                 <br />
-                Published: {article.created_at}
+                Published: {article.created_at.slice(0, 10)}
               </h3>
               <VoteUpdater
                 votes={article.votes}

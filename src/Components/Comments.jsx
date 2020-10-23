@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { getCommentsByArticleId } from "../api";
 import ErrorHandler from "./ErrorHandler";
+import Loader from "./Loader";
 
 class Comments extends Component {
   state = {
@@ -27,8 +28,7 @@ class Comments extends Component {
   render() {
     const { comments, isLoading, error } = this.state;
     if (error) return <ErrorHandler {...error} />;
-    if (isLoading)
-      return <h2 className="loadingArticles">Loading Comments...</h2>;
+    if (isLoading) return <Loader />;
     return (
       <section>
         <p className="comments-list">
@@ -36,7 +36,7 @@ class Comments extends Component {
             <p key={comment.comment_id}>
               <p className="singleCommentsInfo">
                 User: {comment.author} <br />
-                Posted: {comment.created_at} <br />
+                Posted: {comment.created_at.slice(0, 10)} <br />
                 Votes: {comment.votes}
               </p>
               <p className="singleComments">{comment.body}</p>

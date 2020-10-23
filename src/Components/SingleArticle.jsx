@@ -37,7 +37,7 @@ class SingleArticle extends Component {
           <br />
           Topic: {articleInfo.topic}
           <br />
-          Published: {articleInfo.created_at}
+          Published: {articleInfo.created_at.slice(0, 10)}
         </p>
         <p className="singleBody">{articleInfo.body}</p>
         <VoteUpdater
