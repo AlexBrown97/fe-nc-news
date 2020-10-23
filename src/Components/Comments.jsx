@@ -66,7 +66,7 @@ class Comments extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.comments !== this.props.comments) {
+    if (prevState.comments !== this.state.comments) {
       getCommentsByArticleId(this.props.article_id).then(({ data }) => {
         this.setState({ comments: data.comments, isLoading: false });
       });
