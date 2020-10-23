@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { getCommentsByArticleId } from "../api";
+import { getCommentsByArticleId, postCommentByArticleId } from "../api";
 import ErrorHandler from "./ErrorHandler";
 import Loader from "./Loader";
 import styled from "styled-components";
+import CommentAdder from "./CommentAdder";
 
 const Button = styled.button`
   font-family: sans-serif;
@@ -46,7 +47,30 @@ class Comments extends Component {
         });
       });
   }
-  deleteComment() {}
+  deleteComment(comment_id) {
+    return axios.delete(
+      `https://alex-northcoders-news.herokuapp.com/api/comments/${comment_id}`
+    );
+  }
+
+  addComment(body, username) {
+    postCommentByArticleId(this.props.article_id, {
+      body,
+      username,
+    }).then((res) => {
+      this.setState((currentState) => ({
+        comments: [res.data.comment, ...currentState.comments],
+      }));
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState !== this.state.comments) {
+      getCommentsByArticleId(this.props.article_id).then(({ data }) => {
+        this.setState({ comments: data.comments, isLoading: false });
+      });
+    }
+  }
 
   render() {
     const { comments, isLoading, error } = this.state;
@@ -69,6 +93,10 @@ class Comments extends Component {
             </p>
           ))}
         </p>
+        <CommentAdder
+          article_id={this.props.article_id}
+          addComment={this.addComment}
+        />
       </section>
     );
   }

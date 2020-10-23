@@ -19,3 +19,7 @@ export const increaseVotesById = (article_id, voteValue) => {
 export const getCommentsByArticleId = (article_id) => {
   return instance.get(`/articles/${article_id}/comments`);
 };
+
+export const postCommentByArticleId = (article_id, comments) => {
+  return instance.post(`/articles/${article_id}/comments`);
+};
