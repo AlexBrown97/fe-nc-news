@@ -5,7 +5,7 @@ const Loader = () => {
     <section>
       <img
         src="http://www.oceaninvestments.com/images/loading-red.gif"
-        alt="spinning newspaper"
+        alt="loading symbol"
       />
     </section>
   );

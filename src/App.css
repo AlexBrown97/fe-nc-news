@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  animation: fadeIn;
 }
 .articleCards {
   border: 1px solid #ba1f31;
