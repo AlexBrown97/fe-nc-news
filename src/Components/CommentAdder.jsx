@@ -41,6 +41,7 @@ class CommentAdder extends Component {
     e.preventDefault();
     const { body, username } = this.state;
     this.props.addComment(body, username);
+    this.setState({ body: "" });
   };
 
   handleChange = (e) => {
@@ -57,7 +58,12 @@ class CommentAdder extends Component {
           <label className="commentLabel" htmlFor="body">
             Comment:
           </label>
-          <textarea onChange={this.handleChange} name="body" id="body" />
+          <textarea
+            value={this.state.body}
+            onChange={this.handleChange}
+            name="body"
+            id="body"
+          />
           <Button type="submit">Add</Button>
         </form>
       </main>
