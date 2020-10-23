@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import { username } from "../constants";
-
-const { render } = require("react-dom");
 
 const Button = styled.button`
   font-family: sans-serif;

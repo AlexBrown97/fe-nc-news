@@ -4,7 +4,6 @@ import ErrorHandler from "./ErrorHandler";
 import VoteUpdater from "./VoteUpdater";
 import { getArticleById } from "../api";
 import Comments from "./Comments";
-import CommentAdder from "./CommentAdder";
 
 class SingleArticle extends Component {
   state = {

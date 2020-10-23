@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component, forwardRef } from "react";
+import React, { Component } from "react";
 import ErrorHandler from "./ErrorHandler";
 import { Link } from "@reach/router";
 import Loader from "./Loader";
@@ -71,7 +71,6 @@ class ArticleList extends Component {
   // // // extract out method for re-use
   componentDidUpdate(prevProps, prevState) {
     const order = this.state.order;
-    const topic = this.state.topic;
     if (prevState.order !== order) {
       this.fetchOrder();
     }
