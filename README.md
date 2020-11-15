@@ -4,7 +4,7 @@
 
 ## Getting Started
 1) Clone the repository:
-`<git clone https://github.com/AlexBrown97/noughts-and-crosses.git>` 
+`<git clone https://github.com/AlexBrown97/fe-nc-news.git>` 
 
 2) Navigate into the repository directory:
 `<cd fe-nc-news>` 
