@@ -19,7 +19,7 @@ Go to http://localhost:3000/
 ### Task:
 * Create a News application with [React.js](https://reactjs.org/)
 ### Features:
-* View all articles or view by category
+* View all articles or view by topic
 * Give an article an up or down rating
 * Read comments on each article
 * Post and delete a comment on an article
